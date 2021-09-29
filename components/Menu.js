@@ -43,14 +43,19 @@ function menuMaker (menuItems) {
   
   const unorderedList = document.createElement('ul');
   
+
   // listItem Iteration
    menuItems.forEach(element => {
      const listItems = document.createElement('li');
-     listItems.textContent =element;
+     listItems.textContent = element;
      unorderedList.appendChild(listItems);
   });
 
+  //append the unordered list to menu div
+  menu.appendChild(unorderedList);
+
   const menuButton = document.querySelector('.menu-button');
+  // eslint-disable-next-line no-unused-vars
   menuButton.addEventListener ('click', evt =>{
     menu.classList.toggle('menu--open');
   });
@@ -59,7 +64,11 @@ function menuMaker (menuItems) {
 
 }
 
+console.log(menuMaker(['salt', 'ice', 'potato']));
+
 
 const headerHolder = document.querySelector('.header');
 const newMenu = menuMaker(menuItems);
 headerHolder.appendChild(newMenu);
+
+console.log(headerHolder);
