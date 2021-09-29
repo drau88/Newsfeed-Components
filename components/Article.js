@@ -139,6 +139,7 @@ dateP.textContent = date;
 sepPara1.textContent = firstParagraph;
 sepPara2.textContent= secondParagraph;
 sepPara3.textContent = thirdParagraph;
+span.textContent = 'clickme';
 
 
  //putting the pieces together
