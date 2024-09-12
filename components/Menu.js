@@ -12,6 +12,7 @@ let menuItems = [
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
+
   <div class="menu">
     <ul>
       {each menu item as an <li>}
@@ -31,3 +32,43 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+function menuMaker (menuItems) {
+  // menu div element and class
+  
+  const menu = document.createElement('div');
+  menu.classList.add('menu');
+  
+  // ul element
+  
+  const unorderedList = document.createElement('ul');
+  
+
+  // listItem Iteration
+   menuItems.forEach(element => {
+     const listItems = document.createElement('li');
+     listItems.textContent = element;
+     unorderedList.appendChild(listItems);
+  });
+
+  //append the unordered list to menu div
+  menu.appendChild(unorderedList);
+
+  const menuButton = document.querySelector('.menu-button');
+  // eslint-disable-next-line no-unused-vars
+  menuButton.addEventListener ('click', evt =>{
+    menu.classList.toggle('menu--open');
+  });
+
+  return menu;
+
+}
+
+console.log(menuMaker(['salt', 'ice', 'potato']));
+
+
+const headerHolder = document.querySelector('.header');
+const newMenu = menuMaker(menuItems);
+headerHolder.appendChild(newMenu);
+
+console.log(headerHolder);

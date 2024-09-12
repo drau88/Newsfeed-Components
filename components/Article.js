@@ -114,3 +114,70 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker ({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+ 
+ //article element and class
+  const article = document.createElement('div');
+  article.classList.add('article');
+ //heading element
+  const heading = document.createElement('h2');
+ //date paragraph element and class 
+  const dateP = document.createElement('p');
+  dateP.classList.add('date');
+ //3 paragraph elements
+  const sepPara1 = document.createElement('p');
+  const sepPara2 = document.createElement('p');
+  const sepPara3 = document.createElement('p');
+ //span element and class
+ const span = document.createElement('span');
+ span.classList.add('expandButton');
+
+//modifying content of elements
+heading.textContent = title
+dateP.textContent = date;
+sepPara1.textContent = firstParagraph;
+sepPara2.textContent= secondParagraph;
+sepPara3.textContent = thirdParagraph;
+span.textContent = 'clickme';
+
+
+ //putting the pieces together
+ article.appendChild(heading);
+ article.appendChild(dateP);
+ article.appendChild(sepPara1);
+ article.appendChild(sepPara2);
+ article.appendChild(sepPara3);
+ article.appendChild(span);
+
+
+ //add eventlistener to span
+ // eslint-disable-next-line no-unused-vars
+ span.addEventListener('click', event => {
+   article.classList.toggle('article-open');
+ })
+
+
+
+
+ return article;
+}
+
+// console log for component functionality - appears to return markup of desired structure
+// console.log(articleMaker());
+
+//testing object deconstructors 
+// const testArticle = articleMaker({ title: 'title', date: 'imadate', firstParagraph: 'Imthefirstparagraph', secondParagraph: 'imthesecondparagraph', thirdParagraph: 'imthethirdparagraph'});
+// console.log(testArticle);
+
+//Creating article elements based on provided data 
+const articleHolder = document.querySelector('.articles');
+
+const articleElements = data.map(elem => {
+  return articleMaker(elem);
+})
+
+articleElements.forEach(elemtoAdd => {
+  articleHolder.appendChild(elemtoAdd);
+})
+
